@@ -69,7 +69,7 @@ module VCAP::Services
             result.fetch("resources").each { |r| block.yield r }
             url = result["next_url"]
           end
-        rescue e
+        rescue Exception => e
           raise e unless wait > 64
           sleep wait *= 2
           retry
